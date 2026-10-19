@@ -1,6 +1,6 @@
 # Reliquary Ingest: acceptance test plan
 
-**Review draft 0.2 | Baseline v1.0-RC | 19 October 2026**
+**Review draft 0.3 | Baseline v1.0-RC | 19 October 2026**
 
 Target: Dave-Meloncelli/Reliquary.capture.
 Tests below are specifications, not executed tests.
@@ -390,8 +390,12 @@ manual/local operation intact. Record source/version/time/licence.
 Bad: external-first disclosure, unmetered retry, budget bypass or
 provider mutates trusted references. Assert call order, ledger
 amount/status, cap enforcement, denied mutation and preserved inputs.
-Later comparison portion: same inputs/independent gold truth in
-independent/provider-assisted modes; dependent agreement is no proof.
+Gate 2 harness portion: run independent, provider-assisted and
+comparative modes on identical synthetic inputs with independently
+established truth; report accuracy, time, cost and ambiguity.
+A mutant that counts copied upstream evidence as independent truth
+must fail. Execution against the owner's actual proprietary dataset
+is separately authorised Later work, not a reason to defer the harness.
 
 ### AT-32: existing-item collision and SKU reconciliation
 
