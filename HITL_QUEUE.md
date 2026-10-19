@@ -64,6 +64,7 @@ README.md -> DESIGN_SPECIFICATION.md -> REQUIREMENTS.md ->
 ACCEPTANCE_TEST_PLAN.md -> PLAN.md -> BOM.md.
 
 Supporting evidence: BASELINE_SOURCE.md and CIRCLE_BACK.md.
-Earlier local 0.1 drafts and their stale queue must be refreshed
-from this revision before they are used as a handover.
+Circle-back refreshed the local review files and project-root queue
+from GitHub and verified the saved bytes. Future handovers must
+check the saved revision rather than assume a local copy is current.
 No software acceptance gate has been executed by this document audit.
