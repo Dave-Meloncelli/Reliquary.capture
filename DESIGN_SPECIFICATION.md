@@ -1,6 +1,6 @@
 # Reliquary Ingest: canonical design specification
 
-**Review draft 0.2 | Baseline v1.0-RC | 19 October 2026**
+**Review draft 0.3 | Baseline v1.0-RC | 19 October 2026**
 
 Target repository: Dave-Meloncelli/Reliquary.capture.
 Owner: Dave Meloncelli.
@@ -69,6 +69,13 @@ S7 supplies the approved consolidated deferrals and corroborating
 summaries; S6 supplies the original Q1–Q25 records. S7 is not
 mislabelled a verbatim original transcript. S3 is the historical
 earlier excerpt; its former file path now holds S7.
+
+S8: [Preserved baseline source](BASELINE_SOURCE.md), selected exact
+extracts of S7 containing the approved consolidated baseline, owner
+approval and the separately labelled reconstructed register/table.
+This banks the source used for this package in the repository without
+reproducing private account/navigation material. It is not falsely
+labelled as the entire original conversation.
 
 All Q1–Q33 decision IDs and both Q25A/Q26A amendments are now
 accounted for. The former Q9 truncation and Q10–Q25/capture source
@@ -486,8 +493,9 @@ cannot mutate canonical references and can be disabled/replaced
 without restructuring the application. Optional-provider absence
 does not stop manual/local ingestion.
 
-Support independent, provider-assisted and comparative evaluation
-modes using the same inputs and independent truth fixtures.
+Gate 2 supports independent, provider-assisted and comparative
+evaluation modes using the same synthetic inputs and independently
+established truth fixtures, reporting accuracy, time, cost and ambiguity.
 Comparative evaluation of the existing dataset remains deferred
 until the independent design and tests are preserved and access
 is separately authorised. Agreement is not independent proof.
