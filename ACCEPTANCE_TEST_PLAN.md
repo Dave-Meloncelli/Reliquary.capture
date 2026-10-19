@@ -1,6 +1,6 @@
 # Reliquary Ingest: acceptance test plan
 
-**Review draft 0.1 | Baseline v1.0-RC | 19 October 2026**
+**Review draft 0.2 | Baseline v1.0-RC | 19 October 2026**
 
 Target: Dave-Meloncelli/Reliquary.capture.
 Tests below are specifications, not executed tests.
@@ -86,7 +86,8 @@ reject unsupported collector-sensitive output.
 
 ### AT-03: reference promotion is distinct from listing approval
 
-Gate: 1 minimal, 2 full. Source: Q2/Q29.
+Gate: 2; no automatic reference promotion permitted in Gate 1.
+Source: Q2/Q29.
 Good: OCR creates candidate; authorised reference promotion records
 evidence/version/actor; listing approval alone does not promote it.
 Bad: candidate auto-promotes or inventory approver gains reference
@@ -180,18 +181,20 @@ proof. Do not add a fifth component or relax isolation silently.
 
 ### AT-12: policy exceptions and qualified approval
 
-Gate: 1 minimal, 2 bulk. Source: Q3/Q9(partial)/Q26.
+Gate: 1 minimal, 2 bulk. Source: complete Q3/Q9/Q26.
 Good: consistent evidence-qualified records can proceed; missing
 evidence, material defects and authenticity conflicts create
 individual exceptions and cannot pass bulk approval.
 Bad: bulk path bypasses an unresolved exception.
 Assert policy decisions, selected records and exception links.
-Full Q9 acceptance remains pending source recovery.
+Assert immediately-before-approval server revalidation, explicit
+batch authority, eligible/excluded summary and the operator/time/
+listing-revision/evidence/policy-version approval record.
 
 ### AT-13: approval binds reviewed versions
 
-Gate: 1/2 proposal pending review. Source: introduced mechanism;
-related Q2/Q9(partial)/Q29.
+Gate: 2 bulk workflow; Gate 1 stale-approval safety on queue/retry.
+Source: complete original Q9, Q2/Q29. This is now source-backed.
 Good: unchanged reviewed revision is approved; later material edit
 requires fresh approval. Historical approvals retain old references.
 Bad: silently apply stale approval to changed price/grade/evidence.
@@ -231,7 +234,8 @@ Assert selected template/version and required evidence list.
 
 ### AT-18: adaptive capture and approved fallback
 
-Gate: 1 and 2. Source: Q8/Q32.
+Gate: 2 adaptive workflow; approved reduced Gate 1 scope as applicable.
+Source: Q8/Q32 and final allocation in the consolidated baseline.
 Good: missing stock/printing evidence requests an extra slot that
 may be deferred; an approved reduced gate uses the fixed checklist.
 Bad: missing required evidence disappears, or checklist replaces
@@ -242,15 +246,18 @@ Assert request lifecycle, pending exceptions and gate name.
 
 ### AT-19: narrow emergency suspension and alert lifecycle
 
-Gate: 2. Source: Q26, C-06.
+Gate: 2. Source: Q26, C-06, final consolidated baseline.
 Good: authenticity flag or sale elsewhere suspends only the affected
 copy, produces a critical case and permits restoration only after
 owner approval and current-state checks.
 Inject Shopify rejection: case stays unresolved and exposure visible.
 Bad: content edit, product unpublish, sibling inventory change,
 automatic restoration or “alert delivered” treated as resolution.
-Assert exact allowed mutations and separate delivery, acknowledgement,
-suspension and resolution timestamps.
+Assert correct copy, variant and Shopify inventory location, current
+state/concurrency protection, exact allowed mutations and separate
+delivery, acknowledgement, attempted/failed/confirmed suspension
+and resolution timestamps. Wrong location or unconfirmed remote
+state must fail, even if a worker reports success.
 
 ### AT-20: restricted access and privacy tombstone
 
@@ -358,34 +365,228 @@ to provide cross-channel isolation.
 ### AT-30: nonvacuous source and gate evidence
 
 Gate: documentation closure and both release gates.
-Source: Q31/Q33 and traceability clarification.
-Good: every required criterion has sources, evidence status,
-allocation, paired good/bad results and nonzero assertions.
-Bad: missing Q10 to Q25 source, truncated Q9 presented as complete,
-unexecuted test marked passed, empty fixture set or missing negative.
-Assert expected requirement/test/fixture manifests. This draft
-currently fails source-complete closure by design; that is recorded.
+Source: Q31/Q33; S6 original decisions and S7 final baseline.
+Good: all Q1–Q33 plus Q25A/Q26A, C-01–C-08 and applicable
+requirements have source/evidence, dependency, allocation and paired
+good/bad contracts. Executed gate receipts have nonzero assertions.
+Bad: delete a source/requirement, revive superseded Q15 grouping,
+claim missing or reconstructed source is verified, mark unexecuted
+checks passed, use empty fixture set or omit the negative case.
+Assert exact question/amendment/audit/test manifests and precedence.
+Source coverage can pass document validation without software
+acceptance passing. All software tests remain specified, not run.
+
+## Additional recovered requirement tests
+
+### AT-31: tiered processing, spend and replaceable providers
+
+Gate: 2; enabled Gate 1 provider paths must meet privacy/spend controls.
+Source: Q10/Q19/Q27.
+Good: local ISBN/stock/OCR/catalogue result prevents unnecessary AI;
+identical allowed requests deduplicate. Count costs per item, batch,
+operation and provider; cap blocks expensive rerun until authorised.
+Provider outage retains jobs; replacing/disabling an adapter leaves
+manual/local operation intact. Record source/version/time/licence.
+Bad: external-first disclosure, unmetered retry, budget bypass or
+provider mutates trusted references. Assert call order, ledger
+amount/status, cap enforcement, denied mutation and preserved inputs.
+Later comparison portion: same inputs/independent gold truth in
+independent/provider-assisted modes; dependent agreement is no proof.
+
+### AT-32: existing-item collision and SKU reconciliation
+
+Gate: 1 collision safety; 2 operator-controlled reconciliation.
+Source: Q11.
+Good: bibliography match to existing product creates a separate copy
+only when physically distinct; verified same-copy SKU links after
+operator confirmation without altering quantity/history/content.
+Bad: shared ISBN merges two copies, recapture creates a duplicate,
+SKU conflict is ignored or existing product silently overwritten.
+Assert explicit linking decision, unchanged history/quantity and
+auditable safe unlink. Full catalogue migration remains Later.
+
+### AT-33: independent authenticity hold and specialist authority
+
+Gate: 2; honest Gate 1 uncertainty remains covered by AT-02.
+Source: Q12.
+Good: uncertain printing remains disclosed; legitimate PoD is not
+automatically suspect. Credible unauthorised-copy evidence creates
+hold, excludes bulk/publication and is resolved only by an authorised
+specialist with evidence/actor/time/outcome. New conflict reopens it.
+Bad: AI releases hold, labels counterfeit as verified on its own,
+or ordinary uncertainty is falsely treated as confirmed authenticity.
+Assert separate printing/authenticity states and denied release.
+
+### AT-34: portable independent catalogue
+
+Gate: 2; stable internal identity foundation at Gate 1.
+Source: Q13/Q14.
+Good: export documented versioned records/relationships, originals,
+claims, conditions and manifests; restore without Shopify/provider
+IDs becoming canonical IDs. Verify all hashes and links.
+Bad: omit a relationship/image, corrupt a checksum or require a
+live Shopify account to interpret permanent identity.
+Assert manifest counts, ID namespace separation and independent
+restore readability. Multi-cloud automation is Later, not a hidden
+production requirement.
+
+### AT-35: selected-copy accessibility and purchase continuity
+
+Gate: 2. Source: Q16, C-02/C-07.
+Good: keyboard-select each copy and verify its own photos, production
+status, grade, defects, completeness, price, SKU and availability;
+screen-reader state agrees. Cart/checkout/fulfilment retain selection.
+Missing copy data prevents ambiguous purchase; shared facts stay shared.
+Bad: stale sibling photo/grade, wrong selected SKU, inaccessible
+control or fallback allows ambiguous checkout.
+Assert all fields at each boundary and supported variant capacity.
+
+### AT-36: historical events and unknown-cost foundations
+
+Gate: 2 foundations; detailed allocation and analytics Later.
+Source: Q17/Q24.
+Good: retain acquisition/listing/sale/return events and known price,
+discount/fees/freight with provenance; nullable cost stays unknown.
+Approval/pricing can proceed without allocation. Restricted access
+and retention apply; later adjustments preserve old event evidence.
+Bad: unknown silently becomes zero, missing cost blocks approval,
+a correction rewrites a sale or provider can read commercial canaries.
+Assert event IDs/order/links, nullable status and output isolation.
+Later allocation fixtures: known/allocated/estimated/unknown, lot
+expenses, reversed adjustments, no double counting and methodology-
+qualified margins. Do not require full allocation to pass Gate 2.
+
+### AT-37: deferred demand, supply and consent
+
+Gate: Later; not a Gate 1/2 release prerequisite.
+Source: Q18, final baseline deferred scope.
+Good: catalogue-linked wanted title/edition/printing and acceptable
+alternative are distinct from supplier offer and completed sale.
+Customer consent/preferences govern notification; staff leads and
+trade-ins remain separate; interest makes no stock/price promise.
+Bad: send without consent, count a supply offer as confirmed demand,
+infer procurement guarantee or treat browsing as explicit request.
+Assert domain/state distinctions and denied unauthorised send.
+Use synthetic contacts; this test plan sends no messages.
+Passive tracking/predictive scoring/automatic buying remain deferred.
+
+### AT-38: independent claim corroboration and shared policy
+
+Gate: 1 safety; 2 full policy/dependency evaluation.
+Source: Q19/Q20.
+Good: truly independent evidence supports a qualified claim; common
+upstream provenance remains linked and contradictory claims remain.
+Descriptions, back-cover summaries, tags, feeds, metadata and
+structured data invoke the same versioned policy.
+Bad: mirrored datasets count as independent sources, a derived claim
+corroborates its own ancestor, or one output bypasses policy.
+Assert source dependency relations, states, presentation decisions
+and human override actor/time/evidence. Unclassified output fails.
+
+### AT-39: continuous impact and failed withdrawal exposure
+
+Gate: 2. Source: Q21/Q26, C-06.
+Good: material evidence/policy change identifies affected copies,
+current surfaces and caches; records review, owner-approved content
+correction or narrow emergency suspension, preserving sale history.
+Failed/cached withdrawal remains unresolved and alerts.
+Bad: automatic live content rewrite, new material assertion without
+authority, stale cache ignored or internal invalidation treated as
+proof customer exposure ended.
+Assert full dependency/surface manifest and observed remote states.
+
+### AT-40: safe regrouping and deferred migration
+
+Gate: 2 manual hold/resolution; full migration Later.
+Source: Q22, C-01/C-06.
+Good: printing/PoD-only reclassification leaves product group intact.
+Edition/release conflict safely holds copy for manual review, retains
+identity/SKU/evidence/orders and prevents a second sellable copy.
+Bad: automatic cross-product move, active reservation ignored,
+printing change creates a duplicate product, or history is rewritten.
+Assert gate-appropriate authority and at-most-one sellable mapping.
+Later migration fixture requires human-approved destination, failed
+step recovery and safe compensation without rewriting completed sales.
+
+### AT-41: exact sale snapshots and deferred remedies
+
+Gate: 2 historical foundation; full case management Later.
+Source: Q23/Q17.
+Good: freeze represented title/edition/printing/status/condition/
+photos/text/price at sale, link order and later correction without
+overwriting it; identify affected sale for manual escalation.
+Bad: correction rewrites purchase evidence or loses order linkage.
+Assert snapshot hashes and original/corrected evidence versions.
+Later case fixtures: prioritisation/contact/outcome audit and explicit
+human remedy authority; autonomous refund/contact must fail.
+No customer contact or financial action is performed by this plan.
+
+### AT-42: outage approval and mandatory resumed-job revalidation
+
+Gate: 1; exhaustive operational recovery at 2.
+Source: Q25/Q9, Q31 supersession.
+Good: continue capture/review/pricing/approval while Shopify is down.
+Durable jobs survive restart; after recovery check evidence, claims,
+condition, price, approval revision and current Shopify availability.
+Unchanged eligible job prepares the draft once; stale case enters
+Attention Required. UI waits for remote confirmation.
+Bad: lost queued copy, resumed job publishes live, outdated approval
+runs, duplicate variant appears or worker acceptance claims success.
+Assert queue/state/approval versions and Shopify-confirmed result.
+
+### AT-43: dual first-class capture and CZUR import fallback
+
+Gate: 2; a simpler Gate 1 input path is permitted by the final baseline.
+Source: Q25A/Q5 and operational capture/pricing decisions.
+Good: mobile-started copy receives desktop copyright/defect images
+without a second copy record. Both paths work independently, share
+evidence/condition/barcode/OCR contracts and record device/time/slot.
+CZUR direct control is tested if used; unsupported driver uses import.
+Condition is captured with the item, pricing at desktop review.
+Keyboard controls and appropriate spoken status feedback work.
+Bad: desktop needs phone online, device handoff duplicates copy,
+unsupported SDK is assumed working, price blocks initial capture
+or UI calls an unpersisted image “Locally Saved”.
+Assert independent-client runs, shared IDs/hashes, actual persistence,
+accessible states and import success. No new camera purchase required.
 
 ## Gate execution rules
 
-Gate 1 requires F01 to F05 and relevant AT-01 to AT-13, AT-16,
-AT-18, AT-23/24 development portions, AT-27/28 and AT-29/30.
-AT-13 is a proposed safeguard pending package review.
-Disabled enrichment means manual provenance and denied external
-calls are still tested. It does not waive privacy isolation.
+Gate 1 uses F01–F05, the existing isolated dev store and the minimal
+capture path permitted by the final baseline. Mandatory contracts
+include AT-01/02/04/05/06/07/08, applicable approval/retry safety
+in AT-12/13, privacy AT-09/10/11/20/21 as their paths are used,
+architecture/tooling AT-23/24, governance AT-27/28, live-parent
+AT-29, nonvacuous evidence AT-30, collision AT-32, claim safety
+AT-38 and outage AT-42.
+A disabled optional provider is tested as denied/absent; it is not
+claimed to be a production-ready integration.
 
-Gate 2 reruns continuing controls plus every production portion,
-AT-14 to AT-26, AT-29 and AT-30, against FX-50.
-All 50 must have completed end-to-end evidence; 49/50 fails.
+The final source allocation places full hybrid capture, dual
+workstations, adaptive requests, reference promotion, bulk approval,
+template breadth, physical-location workflow and production
+safeguards in Gate 2. Building those features early does not replace
+the five-book end-to-end proof or expand a ratified Gate 1 budget.
+
+Gate 2 repeats Gate 1 invariants and all Gate 2 portions of AT-01
+through AT-43, excluding explicitly Later portions and AT-37.
+Run FX-50: all 50 physical books have completed evidence; 49/50 fails.
 Measure active desktop effort per listing separately from capture
-and service waiting. Report all observations and distribution against
-120 seconds. Timing aggregation/outlier acceptance requires owner
-ratification before execution; do not invent a passing statistic.
+and service waiting. Report every observation/distribution against
+120 seconds. Owner ratifies aggregation/outlier interpretation
+before execution; no silently chosen passing average.
 
-For Gate 2 fault injection, kill a worker after remote success but
-before local acknowledgement, interrupt uploads and repeat approvals.
-No duplicate sellable copy is tolerated.
+Inject worker termination after remote success but before local
+acknowledgement, upload interruption, repeated approval and duplicate/
+out-of-order events. Zero duplicate sellable copies is mandatory.
+All enabled sales channels, direct-cart paths and feed outputs are
+enumerated for AT-29 and AT-25.
 
-Fixtures, automation and gate executions remain to be implemented.
-Source gaps must be resolved before this plan can be called the
-complete acceptance plan for Q1 to Q33.
+Later tests retain future requirements and are not represented as
+passed or counted as mandatory Gate 2 execution. Gate evidence
+reports required, deferred, disabled, blocked, failed and passed
+separately, with fixture/assertion counts.
+
+Source recovery and test contracts are now reconciled against S6/S7.
+Automation, fixture instantiation and software gate execution remain
+future implementation work; no acceptance test has run.
