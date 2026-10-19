@@ -18,7 +18,7 @@ Suggested reading order:
    design details.
 2. [Requirements matrix](REQUIREMENTS.md):
    Q1–Q33, amendments, audit resolutions, evidence status,
-   proposed Gate 1/Gate 2/Later allocation and test references.
+   recovered Gate 1/Gate 2/Later allocation and test references.
 3. [Acceptance test plan](ACCEPTANCE_TEST_PLAN.md):
    physical-book fixtures and 43 named positive/negative test
    contracts, including fault injection and publication safeguards.
@@ -39,6 +39,9 @@ The updated local transcript supplies the approved final consolidated
 baseline, full recovered register and release-allocation table.
 The earlier “Q9 truncated / Q10–Q25 unrecovered” notices are resolved.
 See the specification's source register for provenance and precedence.
+The [preserved baseline source](BASELINE_SOURCE.md) contains the
+approved consolidated text, owner approval and a separately labelled
+reconstructed register so review does not depend solely on chat access.
 
 Recovered scope explicitly defers full historical migration,
 customer demand/notifications, trade-in/collection workflows,
@@ -48,7 +51,8 @@ and manual safety controls remain in the production MVP.
 
 The acceptance tests are specified, not implemented or executed.
 Gate 1's 16-session and Gate 2's revised 24-session effort caps are
-proposals awaiting owner ratification. Unknown expenses are TBD,
+proposals awaiting owner ratification. Attention estimates are
+10 distinct Gate 1 decisions and 8 Gate 2 decisions, also unratified. Unknown expenses are TBD,
 not zero. Technologies and unselected mechanisms remain proposals.
 
 ## Design rules to preserve
@@ -77,6 +81,8 @@ not zero. Technologies and unselected mechanisms remain proposals.
 For Josh and other reviewers, prioritise:
 
 - Source traceability, supersession and the recovered release scope.
+- Gate 2's synthetic provider-comparison harness, kept separate from
+  any later access to the existing proprietary system/dataset.
 - Live-parent variant exposure across storefront, cart and feeds.
 - Demonstrable worker credential isolation, beyond separate schemas.
 - Positive and negative fixtures that cannot pass vacuously.
@@ -85,3 +91,9 @@ For Josh and other reviewers, prioritise:
 Use the specification and requirements matrix to identify the
 decision or test behind each review finding. Reviewing this package
 does not authorise Shopify changes, implementation or deployment.
+
+## Review tracking
+
+See [Circle-back receipt](CIRCLE_BACK.md) for the latest documentation
+checks and [owner review queue](HITL_QUEUE.md) for decisions required
+before implementation. These do not constitute software gate results.
