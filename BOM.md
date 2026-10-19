@@ -1,6 +1,6 @@
 # Reliquary Ingest: bill of materials
 
-**Review draft 0.1 | Baseline v1.0-RC | 19 October 2026**
+**Review draft 0.2 | Baseline v1.0-RC | 19 October 2026**
 
 Repository target: Dave-Meloncelli/Reliquary.capture.
 Currency: AUD unless a future supplier quote states otherwise.
@@ -62,9 +62,14 @@ Incremental licence/hosting cost: TBD, included in web line where
 applicable rather than counted twice.
 
 Capture devices and accessories:
-existing suitable device availability unverified; tripod, lighting,
-labels/scanner and label printer requirements TBD.
-No hardware purchase is assumed necessary.
+an existing CZUR Lens desktop document camera is confirmed by the
+owner's original Q25A discussion. Reuse it; no new camera purchase
+is required to begin. Direct video/SDK/driver compatibility, exact
+model, licensing and image quality must be verified.
+Desktop file import is the approved fallback. Both desktop and iOS
+capture are first-class Gate 2 workflows sharing canonical identity;
+a simpler Gate 1 input is permitted.
+Tripod, lighting, labels/scanner and label-printer needs/costs: TBD.
 
 Local persistence:
 durable location-free image queue, recovery and upload status.
@@ -150,8 +155,11 @@ costs TBD. Managed TLS availability is not assumed.
 
 ## Effort and spend model
 
-PLAN.md proposes Gate 1: 16 agent sessions; Gate 2: 20 additional
-sessions. Confidence low pending complete source reconciliation.
+PLAN.md proposes Gate 1: 16 agent sessions; Gate 2: 24 additional
+sessions. Confidence low pending runtime/device and throughput validation.
+The 24-session Gate 2 proposal supersedes the earlier unratified
+20-session estimate by explicitly allowing four sessions for full
+hybrid/dual capture. No budget increase or reset has been approved.
 These are introduced estimates, not ratified spend authority.
 Human work: task breakdown/hours/rates TBD if needed.
 Agent subscription/usage charges: TBD; no assumed marginal cost.
@@ -182,7 +190,32 @@ terms, cancellation/export path, licence restrictions and confidence.
 Implementer demonstrates compatibility with four components, worker
 isolation, draft-only owner release and known-good/known-bad tests.
 
-Source gaps, framework choice, managed-provider choice, distribution
-route, timing acceptance and recovery objectives remain explicit.
+Q1–Q33 and amendments have now been source-reconciled. Framework
+choice, managed-provider choice, distribution route, timing acceptance
+and recovery objectives remain explicit.
 The final BOM total is TBD. This document does not present an
 unverified low estimate as a funded operating plan.
+
+## Recovered requirements affecting dependency choices
+
+Tiered processing needs cost metering per item/batch/operation/provider,
+deduplication, capped escalation and versioned replaceable adapters.
+Library, local-model and provider licence/usage costs remain TBD.
+
+Claims need provenance and dependent-source relationships; these
+are logical data within the existing database, not a new graph
+database or backend service.
+
+Gate 2 needs portable manifests/exports and historical transaction
+snapshots, nullable cost records and safe manual holds.
+Their implementation effort is included in the revised plan;
+commercial hosting/retention charges remain TBD.
+
+Full demand/notification workflows, trade-ins/collection acquisition,
+advanced intelligence, full historical migration, complete customer-
+impact case management and detailed acquisition allocation are Later.
+Do not charge their full implementation to the production MVP or
+buy additional infrastructure for them without review.
+
+Source recovery adds no new hardware purchase or infrastructure
+component. Final scope follows the approved consolidated baseline.
