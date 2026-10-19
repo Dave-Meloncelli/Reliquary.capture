@@ -9,8 +9,7 @@ application.
 The owner has approved **Design Baseline v1.0-RC**.
 The documents in this repository are **review drafts**.
 Their placement on `main` makes them available for review; it does
-not certify source completeness, approve the proposed budgets or
-demonstrate production readiness.
+not approve numerical budgets, implementation or production readiness.
 
 Suggested reading order:
 
@@ -21,7 +20,7 @@ Suggested reading order:
    Q1–Q33, amendments, audit resolutions, evidence status,
    proposed Gate 1/Gate 2/Later allocation and test references.
 3. [Acceptance test plan](ACCEPTANCE_TEST_PLAN.md):
-   physical-book fixtures and 30 named positive/negative test
+   physical-book fixtures and 43 named positive/negative test
    contracts, including fault injection and publication safeguards.
 4. [Delivery plan](PLAN.md):
    two release gates, proposed effort and owner-attention budgets,
@@ -29,22 +28,28 @@ Suggested reading order:
 5. [Bill of materials](BOM.md):
    dependencies, cost drivers and explicitly TBD expenses.
 
-## Important review limits
+## Source reconciliation and review status
 
-The available sources directly support Q26A and Q26–Q33,
-together with the eight final audit resolutions.
-Q1–Q9 are represented by a reconstructed decision summary;
-Q9 is truncated. Q10–Q25 and earlier capture amendments remain
-unrecovered and explicitly unallocated.
+The original signed-in **App Capture Concept** conversation is now
+readable. Its Q1–Q25 decision records, complete Q9 and Q25A dual-
+capture amendment have been checked directly. Q26A/Q26–Q33 and the
+eight final audit resolutions are also accounted for.
 
-The requirements distinguish directly supported decisions,
-reconstructed decisions and implementation proposals.
-Resolve these source gaps before certifying the package as the
-complete canonical baseline or starting implementation.
+The updated local transcript supplies the approved final consolidated
+baseline, full recovered register and release-allocation table.
+The earlier “Q9 truncated / Q10–Q25 unrecovered” notices are resolved.
+See the specification's source register for provenance and precedence.
+
+Recovered scope explicitly defers full historical migration,
+customer demand/notifications, trade-in/collection workflows,
+advanced intelligence, full customer-impact cases and detailed cost
+allocation. Essential identity/history, nullable cost foundations
+and manual safety controls remain in the production MVP.
 
 The acceptance tests are specified, not implemented or executed.
-Numerical budgets and release allocations remain proposals for
-owner review. Unknown expenses are TBD, not assumed to be zero.
+Gate 1's 16-session and Gate 2's revised 24-session effort caps are
+proposals awaiting owner ratification. Unknown expenses are TBD,
+not zero. Technologies and unselected mechanisms remain proposals.
 
 ## Design rules to preserve
 
@@ -58,6 +63,8 @@ owner review. Unknown expenses are TBD, not assumed to be zero.
 - Emergency automation is limited to suspending one affected
   copy's availability, with a critical alert and owner-controlled
   restoration.
+- Mobile and desktop/CZUR capture are first-class Gate 2 workflows,
+  with file-import fallback and a shared physical-copy identity.
 - Processing is local-first. External enrichment receives only
   permitted task data; commercial and personal data remain isolated.
 - The MVP backend has four components: web application, background
@@ -69,7 +76,7 @@ owner review. Unknown expenses are TBD, not assumed to be zero.
 
 For Josh and other reviewers, prioritise:
 
-- Source traceability and unresolved requirements.
+- Source traceability, supersession and the recovered release scope.
 - Live-parent variant exposure across storefront, cart and feeds.
 - Demonstrable worker credential isolation, beyond separate schemas.
 - Positive and negative fixtures that cannot pass vacuously.
