@@ -1,478 +1,469 @@
 # Reliquary Ingest: requirements and gate matrix
 
-**Review draft 0.1 | Baseline v1.0-RC | 19 October 2026**
+**Review draft 0.2 | Baseline v1.0-RC | 19 October 2026**
 
-Sources S1 to S4 are defined in DESIGN_SPECIFICATION.md.
-Recovered decisions are attributed/recovered.
-Evidence status is stated for every question/amendment below.
-“Approved but reconstructed” is not direct transcript verification.
-All allocations below are introduced planning proposals for review;
-they do not alter the approved design.
+Q1–Q33 and Q25A/Q26A are now sourced. See S1–S7 and precedence
+in DESIGN_SPECIFICATION.md. S6 is the original signed-in
+conversation; S7 includes the approved final consolidated baseline
+and the complete reconstructed register/classification table.
+Earlier summary-only gaps are closed, not reclassified as Later.
 
-Classification vocabulary:
+Each requirement below has an ID, source/evidence, class/gate,
+implementation dependency and named acceptance contract. Source
+and dependency lines apply to every requirement in their Q section.
+Acceptance tests specify both observable good and bad outcomes.
+No test is represented as executed.
 
-- MVP / Gate 1 minimal: required for the technical proof.
-- MVP / Gate 2 required: production safeguard or completion.
-- LATER / Later: retained intent outside the two release gates.
-- DROPPED: requires an explicit owner decision; none invented here.
-- UNALLOCATED: source missing. Not a synonym for Later or Dropped.
+Evidence: “approved/direct” means attributed to the available
+original owner decisions and recorded registers, not independent
+technical verification. S7's reconstructed table is used alongside
+its approved final baseline and S6 original records.
+Numerical budgets, technologies and unselected mechanisms remain
+implementation proposals; they do not inherit design approval.
 
-A Gate 1 requirement continues into Gate 2.
-Deferral never permits unsafe behaviour on an earlier gate's path.
-If a feature is not needed yet, disable its path; do not run it with
-weaker privacy, claim or publication controls.
+Gate allocation follows the recovered consolidated scope:
+Gate 1 is a small technical proof, Gate 2 completes production
+safeguards, Later retains deferred capabilities. Safeguards apply
+before any path needing them is enabled. A Gate 2 feature can stay
+disabled in Gate 1; it cannot run there with weaker safety.
 
-## Original decisions Q1 to Q9
+Gate 1 requirements continue into Gate 2.
+No accepted major capability is wholly DROPPED.
 
-### Q1: conditional collector identity
+## Q1: Conditional collector identity
 
-Source/evidence: S2; approved but reconstructed.
+Source/evidence: S6 original Q1; S7 final baseline and register; approved/direct.
+Dependency: Claims, Evidence.
 
-Class/gate: MVP, Gate 1 minimal.
-Requirement: each copy's identity is evidence-based; uncertainty is
-disclosed; unsupported collector claims and inherited status fail.
-Gate 2: production-wide evidence checks and conflict handling.
-Tests: AT-01, AT-02, AT-08.
+**R01-1 | MVP / Gate 1**
+Disclose uncertainty; reject unsupported collector claims and sibling-inherited identity. Preserve copy evidence; conflicts require review.
+Acceptance: AT-01, AT-02, AT-08.
 
-### Q2: human promotion of reference records
+## Q2: Human reference promotion
 
-Source/evidence: S2; approved but reconstructed.
+Source/evidence: S6 original Q2; S7 final baseline and register; approved/direct.
+Dependency: Catalogue, Claims, authorisation.
 
-Class/gate: MVP, Gate 1 minimal for provisional/manual records.
-Gate 2 required for the complete authorised promotion workflow,
-versioned references and audit. No automatic promotion at either gate.
-Tests: AT-03, AT-13.
+**R02-1 | MVP / Gate 2**
+Keep provisional and verified references separate; authorised human promotion needs evidence/audit; version verified changes. Inventory approval is a different permission; references cannot silently overwrite contrary copy evidence.
+Acceptance: AT-03, AT-13, AT-21.
 
-### Q3: exception-driven condition
+## Q3: Exception-driven condition
 
-Source/evidence: S2; approved but reconstructed.
+Source/evidence: S6 original Q3; S7 final baseline and register; approved/direct.
+Dependency: Capture, templates, Evidence.
 
-Class/gate: MVP, Gate 1 minimal: grade, defects, evidence and
-boxed-set box/contents grading.
-Gate 2 required: configurable exception policy, routine handling and
-prevention of AI override. Tests: AT-04, AT-12.
+**R03-1 | MVP / Gate 1 basic; Gate 2 full**
+Assess grade, defects, completeness and photos at capture. Routine consistent cases avoid a second inspection; material concerns block bulk approval. AI flags but cannot override; audit corrections. Keep bibliographic, collector and physical-condition confidence distinct.
+Acceptance: AT-04, AT-12.
 
-### Q4: Shopify inventory ownership
+## Q4: Shopify inventory authority
 
-Source/evidence: S2; approved but reconstructed.
+Source/evidence: S6 original Q4; S7 final baseline and register; approved/direct.
+Dependency: Commerce, event reconciliation.
 
-Class/gate: MVP, Gate 1 minimal: draft inventory, simulated sale,
-retry and no stock resurrection.
-Gate 2 required: reservation/refund/return/adjustment reconciliation
-and physical inspection of returned stock.
-Tests: AT-06, AT-07, AT-14.
+**R04-1 | MVP / Gate 1**
+Provision only the approved initial copy state; Shopify owns availability thereafter. Metadata sync never resets quantity; duplicate/delayed/missed events reconcile. Sold stock cannot resurrect; returns need inspection. Discrepancies create exceptions.
+Acceptance: AT-06, AT-07, AT-14, AT-29.
 
-### Q5: hybrid iOS and shared desktop workflow
+## Q5: Hybrid iOS capture durability
 
-Source/evidence: S2; approved but reconstructed.
+Source/evidence: S6 original Q5; S7 final baseline and register; approved/direct.
+Dependency: Capture, persistent client storage.
 
-Class/gate: MVP, Gate 1 minimal capture/review path with durable
-local capture, offline continuity and resumable upload.
-Gate 2 required: hardening across supported devices and recovery.
-Framework remains TBD. Tests: AT-05, AT-15.
+**R05-1 | MVP / Gate 2; simpler Gate 1 capture allowed**
+Native camera/storage/recovery with shared web logic/contracts. Persist photos and condition before Locally Saved; show actual Uploading/Server Verified/Attention Required. Capture continues during sync; unsynced is not backed up; iOS background completion is not guaranteed. Framework TBD.
+Acceptance: AT-05, AT-15, AT-43.
 
-### Q6: permanent identity and physical location
+## Q6: Physical location and fulfilment
 
-Source/evidence: S2; approved but reconstructed.
+Source/evidence: S6 original Q6; S7 final baseline and register; approved/direct.
+Dependency: Capture, Commerce, location history.
 
-Class/gate: MVP, Gate 1 minimal: copy ID, SKU and capture location.
-Gate 2 required: final-location publication preflight and audited
-moves. Physical and Shopify locations remain distinct.
-Tests: AT-01, AT-16.
+**R06-1 | MVP / Gate 2**
+Permanent copy SKU; select/scan location, carry forward until changed, hierarchical shelf/bin locations, audited movement. Staging is allowed; final location required before publication. Fulfilment identifies copy/location; physical and Shopify locations stay distinct.
+Acceptance: AT-01, AT-16.
 
-### Q7: templates and sealed handling
+## Q7: Versioned product templates
 
-Source/evidence: S2; approved but reconstructed.
+Source/evidence: S6 original Q7; S7 final baseline and register; approved/direct.
+Dependency: Catalogue, Capture, condition policy.
 
-Class/gate: MVP, Gate 1 minimal for book and boxed-set fixtures.
-Gate 2 required: simple accessories and configurable policies,
-including sealed items without opening.
-LATER / Later: TCG and LEGO extensions.
-Tests: AT-04, AT-17.
+**R07-1 | MVP / Gate 1 basic; Gate 2 full**
+Books, boxed sets and simple accessories use one pipeline and versioned type-specific evidence/metadata/completeness policies. Box/contents grading and component manifest; sealed items stay closed with unverified internals disclosed.
+Acceptance: AT-04, AT-17.
 
-### Q8: adaptive evidence capture
+**R07-2 | LATER / after Gate 2**
+TCG, LEGO and specialist grading remain extension scope.
+Acceptance: AT-17.
 
-Source/evidence: S2; approved but reconstructed.
+## Q8: Adaptive evidence capture
 
-Class/gate: MVP, Gate 1 minimal adaptive requests and deferred
-resolution without blocking capture.
-Gate 2 required: robust template-driven adaptation.
-A fixed checklist is an owner-approved Q32 cut, not a silent
-reclassification. Tests: AT-05, AT-18.
+Source/evidence: S6 original Q8; S7 final baseline and register; approved/direct.
+Dependency: Capture, local identification.
 
-### Q9: policy-qualified bulk approval, incomplete source
+**R08-1 | MVP / Gate 2**
+Minimum template photos, rapid local checks, explained in-hand extra-image requests and deferral as visible desktop exceptions. Distinguish missing/inconclusive/contradictory evidence, retain copy/SKU links and never block capture on slow enrichment or network.
+Acceptance: AT-05, AT-18.
 
-Source/evidence: S2; approved but reconstructed; truncated.
+## Q9: Policy-qualified bulk approval
 
-Class/gate: MVP, Gate 2 required for recovered bulk-approval intent.
-Gate 1 can use individual approval; it must still check policy.
-Full Q9 classification remains UNALLOCATED until the truncated
-sentence and remaining conditions are recovered.
-Test: AT-12. Proposed version-bound approval check: AT-13;
-do not represent that proposal as the missing source text.
+Source/evidence: S6 original Q9; S7 final baseline and register; approved/direct.
+Dependency: Claims policy, review, approval ledger.
 
-## Unrecovered decisions Q10 to Q25
+**R09-1 | MVP / Gate 2**
+Explicit human batch authority; show eligible/excluded records and exceptions. Revalidate each current item on server. Preserve operator/time/listing revision/evidence/policy version; material changes invalidate approval. AI confidence is not authority. Q31 limits resulting automation to draft preparation.
+Acceptance: AT-12, AT-13, AT-29, AT-42.
 
-The following sixteen entries intentionally preserve every ID.
-No title, requirement or release allocation has been fabricated.
+## Q10: Tiered processing and spending controls
 
-### Q10: source not recovered
+Source/evidence: S6 original Q10; S7 final baseline and register; approved/direct.
+Dependency: Worker, provider adapters, cost ledger.
 
-Source/evidence: no available source; source absent.
+**R10-1 | MVP / Gate 2; controls required whenever enrichment is enabled**
+Barcode/OCR/internal matching before AI; reuse verified knowledge, deduplicate identical requests, capture asynchronously and recover from outage. Track per-item/batch/operation/provider cost; enforce caps/escalation and authorise expensive over-budget reruns. Q27 local-first boundary prevails.
+Acceptance: AT-09, AT-21, AT-31.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+## Q11: Existing-stock reconciliation
 
-### Q11: source not recovered
+Source/evidence: S6 original Q11; S7 final baseline and register; approved/direct.
+Dependency: Commerce, stable copy identifiers.
 
-Source/evidence: no available source; source absent.
+**R11-1 | MVP / Gate 1 collision safety; Gate 2 full safeguards**
+Check existing matches before creation; bibliography is not physical identity. Explicit confirmation for linking; preserve content, IDs, quantity and sales history. SKU conflicts/uncertain copy matches create exceptions; linking decisions are audited and safely reversible.
+Acceptance: AT-01, AT-06, AT-32.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+**R11-2 | LATER / after Gate 2**
+Complete historical catalogue migration; it is not a launch prerequisite.
+Acceptance: AT-32, AT-40.
 
-### Q12: source not recovered
+## Q12: Separate authenticity hold
 
-Source/evidence: no available source; source absent.
+Source/evidence: S6 original Q12; S7 final baseline and register; approved/direct.
+Dependency: Claims, reviewer authorisation.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+**R12-1 | MVP / Gate 2; Gate 1 never asserts unsupported claims**
+Printing uncertainty is not counterfeit evidence. Credible misrepresentation/unauthorised-copy concern holds approval/publication. Specialist disposition records evidence/actor/time/outcome; AI cannot declare counterfeit or release hold. New contrary evidence reopens verification; C-06 governs live protection.
+Acceptance: AT-02, AT-12, AT-19, AT-33.
 
-### Q13: source not recovered
+## Q13: Independent catalogue and managed infrastructure
 
-Source/evidence: no available source; source absent.
+Source/evidence: S6 original Q13; S7 final baseline and register; approved/direct.
+Dependency: Catalogue, Evidence, managed hosting.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+**R13-1 | MVP / Gate 1 foundation**
+Own persistent catalogue/media/history independently of Shopify. Separate commerce adapter; select providers on cost/security/accessibility/portability/maintenance, with measurable BOM costs. No adaptation to the pre-existing implementation.
+Acceptance: AT-23, AT-34.
 
-### Q14: source not recovered
+## Q14: Portable exports and rehearsed restore
 
-Source/evidence: no available source; source absent.
+Source/evidence: S6 original Q14; S7 final baseline and register; approved/direct.
+Dependency: Database, object store, manifests.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+**R14-1 | MVP / Gate 2**
+Versioned export of canonical records/relationships/media/provenance; stable internal IDs separate from external IDs. Checksums/manifests verify exports. Scheduled backups, documented dependencies/manual steps and at least one end-to-end restore before production.
+Acceptance: AT-22, AT-34.
 
-### Q15: source not recovered
+**R14-2 | LATER / after Gate 2**
+Full multi-cloud deployment automation is not required by the MVP.
+Acceptance: AT-34.
 
-Source/evidence: no available source; source absent.
+## Q15: Commercial product groups and copy variants
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+Source/evidence: S6 original Q15; S7 final baseline and register; approved/direct.
+Dependency: Catalogue, Commerce.
 
-### Q16: source not recovered
+**R15-1 | MVP / Gate 1**
+C-01 supersedes production-group splitting. One title + content edition + release product; each copy its own variant/SKU/price/media/condition/quantity. Printings and PoD can coexist; different releases split. Product membership never proves copy identity.
+Acceptance: AT-01, AT-02, AT-07, AT-29.
 
-Source/evidence: no available source; source absent.
+## Q16: Dynamic selected-copy presentation
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+Source/evidence: S6 original Q16; S7 final baseline and register; approved/direct.
+Dependency: Theme, Commerce, channel inventory.
 
-### Q17: source not recovered
+**R16-1 | MVP / Gate 2**
+Selected photos/grade/defects/completeness/production identity/price/SKU/availability remain correct through product, cart, checkout and fulfilment. Shared bibliography only at product level. Accessible keyboard/screen-reader use; missing copy data prevents ambiguous purchase. Verify theme and variant capacity; per-variant feeds/condition.
+Acceptance: AT-08, AT-25, AT-29, AT-35.
 
-Source/evidence: no available source; source absent.
+## Q17: Historical inventory and commercial events
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+Source/evidence: S6 original Q17; S7 final baseline and register; approved/direct.
+Dependency: Evidence, Commerce restricted schemas.
 
-### Q18: source not recovered
+**R17-1 | MVP / Gate 2 foundation**
+Retain copy/evidence and acquisition/listing/sale/return/retirement history, variant/order links and known costs/prices/discounts/fees/freight without rewriting events. Personal records restricted. C-07 keeps sold variants unavailable, hidden and out of feeds.
+Acceptance: AT-07, AT-21, AT-25, AT-36, AT-41.
 
-Source/evidence: no available source; source absent.
+**R17-2 | LATER / after Gate 2**
+Advanced profitability/ageing/demand intelligence, valuation, forecasting and purchasing recommendations.
+Acceptance: AT-36, AT-37.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+## Q18: Customer demand and supply register
 
-### Q19: source not recovered
+Source/evidence: S6 original Q18; S7 final baseline and register; approved/direct.
+Dependency: Deferred Demand module, consent.
 
-Source/evidence: no available source; source absent.
+**R18-1 | LATER / after Gate 2**
+Customer wanted items and acceptable substitutes; staff purchasing/trade-in/collection leads; distinguish demand, potential supply and completed transactions. Explicit requests outrank passive signals. Catalogue linkage independent of live products; consent/preferences before notifications, no stock/price/procurement promise. Passive tracking/predictive scoring outside MVP.
+Acceptance: AT-37.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+## Q19: Isolated versioned data providers
 
-### Q20: source not recovered
+Source/evidence: S6 original Q19; S7 final baseline and register; approved/direct.
+Dependency: Claims, provider register, adapters.
 
-Source/evidence: no available source; source absent.
+**R19-1 | MVP / Gate 2**
+Versioned replaceable Data Provider Interface; attributed candidates with version/time/usage restrictions, never direct canonical mutation. Human reference promotion; optional-provider outage preserves local/manual operation.
+Acceptance: AT-03, AT-09, AT-31, AT-38.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+**R19-2 | LATER / separately authorised independent comparison**
+Support independent/provider-assisted/comparative evaluation against identical inputs and independent truth. Preserve design/tests before access to the existing dataset; agreement alone is not correctness.
+Acceptance: AT-31, AT-38.
 
-### Q21: source not recovered
+## Q20: Central claims and independent corroboration
 
-Source/evidence: no available source; source absent.
+Source/evidence: S6 original Q20; S7 final baseline and register; approved/direct.
+Dependency: Claims, Evidence, all output adapters.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+**R20-1 | MVP / Gate 1 safety; Gate 2 full**
+Material claim value/scope/source/evidence/confidence/status; preserve conflicts and common upstream/derived-source dependencies. No circular or dependent-source corroboration. One versioned policy asserts/attributes/qualifies/withholds/escalates across every output, including back-cover summaries. Human overrides audited; no unclassified bypass.
+Acceptance: AT-02, AT-08, AT-13, AT-38.
 
-### Q22: source not recovered
+## Q21: Continuous evidence-policy impact
 
-Source/evidence: no available source; source absent.
+Source/evidence: S6 original Q21; S7 final baseline and register; approved/direct.
+Dependency: Claims, Commerce, exception centre.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+**R21-1 | MVP / Gate 2 limited safety**
+Evidence/policy changes identify affected copies and customer surfaces; preserve historical representations. New material assertions/live content corrections need humans. C-06 alone permits automatic one-copy emergency suspension. Handle stale caches and failed updates as unresolved exposure with critical alert.
+Acceptance: AT-19, AT-21, AT-39.
 
-### Q23: source not recovered
+## Q22: Controlled regrouping and migration
 
-Source/evidence: no available source; source absent.
+Source/evidence: S6 original Q22; S7 final baseline and register; approved/direct.
+Dependency: Commerce, claims holds, order state.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+**R22-1 | MVP / Gate 2 manual safety**
+Hold affected copy and route identity conflicts/manual resolution. Permanent identity/history and transactions preserved; orders/reservations require resolution; at most one sellable representation. Printing/PoD-only change does not move product under C-01.
+Acceptance: AT-19, AT-32, AT-40.
 
-### Q24: source not recovered
+**R22-2 | LATER / after Gate 2**
+Full migration with authorised destination/reason, recoverable multi-step actions, reconciliation and safe compensation/rollback without rewriting completed transactions.
+Acceptance: AT-40.
 
-Source/evidence: no available source; source absent.
+## Q23: Post-sale accountability
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+Source/evidence: S6 original Q23; S7 final baseline and register; approved/direct.
+Dependency: Immutable sale snapshots, Commerce.
 
-### Q25: source not recovered
+**R23-1 | MVP / Gate 2 foundation**
+Preserve exact represented title/edition/printing/status/condition/photos/text/price and order links. Later corrections never rewrite sale evidence; allow affected-sale identification and manual escalation.
+Acceptance: AT-21, AT-36, AT-41.
 
-Source/evidence: no available source; source absent.
+**R23-2 | LATER / after Gate 2**
+Full prioritised customer-impact case workflow, contact history and human-authorised refund/return/replacement/compensation with access/retention and applicable obligations assessed.
+Acceptance: AT-41.
 
-Class: UNALLOCATED, not DROPPED.
-Gate: unresolved; no Gate 1/Gate 2/Later claim is defensible.
-Source: absent from S2, S3 and the accessible S4 exchanges.
-Action: recover the approved decision, split its requirements,
-allocate them and add positive/negative tests before implementation.
+## Q24: Optional acquisition cost and lot allocation
 
-## Recovered decisions Q26 to Q33
+Source/evidence: S6 original Q24; S7 final baseline and register; approved/direct.
+Dependency: Restricted commercial model.
 
-### Q26: central operational exception centre
+**R24-1 | MVP / Gate 2 nullable foundation**
+Unknown cost is not zero; separate known/allocated/estimated/unknown and permit capture/pricing/approval without full cost. Preserve extensible cost provenance and adjustment hooks.
+Acceptance: AT-36.
 
-Source/evidence: S3; approved and directly supported.
+**R24-2 | LATER / after Gate 2**
+Detailed acquisition-lot costs/expenses, retrospective item allocation, adjustment audit, no double counting and methodology-preserving financial analytics.
+Acceptance: AT-36.
 
-Class/gate: MVP.
-Gate 1 minimal: visible actionable failures and audited recovery.
-Gate 2 required: severity, exposure, responsible operator,
-notification/acknowledgement/resolution separation, escalation and
-historical case analysis. Tests: AT-12, AT-19.
+## Q25: Durable Shopify outage queue
 
-### Q27: local-first, purpose-limited disclosure
+Source/evidence: S6 original Q25; S7 final baseline and register; approved/direct.
+Dependency: Capture, Commerce, database jobs.
 
-Source/evidence: S3; approved and directly supported.
+**R25-1 | MVP / Gate 1**
+Capture/enrichment/review/pricing/approval continue during Shopify outage. Durable retries survive outage/auth/rate limits. Resume only after current evidence/claims/condition/price/approval/inventory revalidation. Actual states distinguish approved, awaiting, draft work, confirmed and attention. Q31 forbids resumed jobs publishing live; no success before remote confirmation.
+Acceptance: AT-05, AT-06, AT-13, AT-42.
 
-Class/gate: MVP, Gate 1 minimal and never cut.
-Gate 1: restricted worker credentials, separated sensitive schemas,
-local-first/manual path and no disallowed disclosure.
-Gate 2 required: full reviewed provider register, allowlists,
-sanitisation, per-call audit and tested fallback.
-Any provider enabled in Gate 1 must already meet all these controls.
-Tests: AT-08, AT-09, AT-10, AT-11.
+## Q26: Central operational exceptions
 
-### Q28: location-free immutable evidence
+Source/evidence: S3/S4 original Q26; S7 consolidated baseline; approved/direct.
+Dependency: Commerce, web/worker notifications.
 
-Source/evidence: S3; approved and directly supported.
+**R26-1 | MVP / Gate 2 minimal centre**
+Material failures create prioritised cases with severity/copies/customer-financial exposure/owner/cause/attempts/state. Critical alerts and escalation; routine queue, safe retries/audit/history. Delivery, acknowledgement, confirmed protection and resolution are separate.
+Acceptance: AT-19, AT-23, AT-39, AT-42.
 
-Class/gate: MVP, Gate 1 minimal: location-free acquisition,
-canonical hashes, original-pixel preservation, restricted originals,
-derivatives and retake history.
-Gate 2 required: privacy retention exceptions, restrictions and
-backup/recovery propagation. Enabled media paths require safeguards
-from their first use. Tests: AT-10, AT-20, AT-21.
+## Q27: Local-first purpose-limited privacy
 
-### Q29: versioned consequential processing
+Source/evidence: S3/S4 original Q27; S7 consolidated baseline; approved/direct.
+Dependency: Restricted roles, disclosure gateway.
 
-Source/evidence: S3; approved and directly supported.
+**R27-1 | MVP / Gate 1 privacy; Gate 2 full**
+Four data classes; local/internal/OCR/matching first. Task allowlists, sanitised/cropped derivatives and no original access. Commercial/personal schemas structurally denied to provider execution. Provider register records terms/region/retention/no-training; audit field list/payload hash/outcome. Untrusted returns/OCR; stop rather than weaken. Explicit exceptions audited.
+Acceptance: AT-08, AT-09, AT-10, AT-11, AT-28.
 
-Class/gate: MVP, Gate 1 minimal when OCR/AI is enabled:
-input/version/configuration ledger and preserved outcomes.
-Manual provenance remains mandatory if enrichment is cut.
-Gate 2 required: reconciliation across versions and historical
-approvals/corrections. Tests: AT-03, AT-21.
+## Q28: Location-free immutable image evidence
 
-### Q30: fixed architecture and vertical slice
+Source/evidence: S3/S4 original Q28; S7 consolidated baseline; approved/direct.
+Dependency: Capture boundary, object store.
 
-Source/evidence: S3; approved and directly supported.
+**R28-1 | MVP / Gate 1**
+No GPS capture; strip imports before persistence while preserving pixels, then hash canonical file. Restricted/audited originals, retake supersession and derivative lineage. Ordinary retention indefinite; personal-content restrictions and C-05 authorised tombstones/deletion apply across restored/public derivatives.
+Acceptance: AT-10, AT-20, AT-21, AT-22.
 
-Class/gate: MVP, Gate 1 minimal: four components, database queue,
-enforced module/credential boundaries and one-book first slice.
-Gate 2 required: managed operational services, automatic backups,
-rehearsed recovery command and daily health summary.
-Tests: AT-11, AT-22, AT-23.
-No broker or microservice addition is allocated as Later by default.
+## Q29: Versioned consequential processing
 
-### Q31: two gates and owner publication
+Source/evidence: S3/S4 original Q29; S7 consolidated baseline; approved/direct.
+Dependency: Evidence, processing-run ledger.
 
-Source/evidence: S3; approved and directly supported.
+**R29-1 | MVP / Gate 2; preserve enabled Gate 1 provenance**
+Immutable run ID/input hashes/references/time/model/version/config/output/claims/review; reruns append, old approvals retain exact evidence. Disagreements reconcile; human corrections audited. Temporary cache expiry allowed; provenance is not guaranteed identical AI results.
+Acceptance: AT-03, AT-13, AT-21.
 
-Class/gate: MVP, Gate 1 and Gate 2 governance.
-Gate 1: five named book roles, correct drafts, retry and sale.
-Gate 2: 50 books, desktop timing, fault injection, restore,
-privacy and evidence-safe outputs.
-Named good/bad tests and non-empty evidence apply to both.
-Tests: AT-01 to AT-11, AT-22 to AT-26, AT-29.
+## Q30: Four-component modular monolith
 
-### Q32: fixed budgets, checkpoint and cuts
+Source/evidence: S3/S4 original Q30; S7 consolidated baseline; approved/direct.
+Dependency: All modules, database queue.
 
-Source/evidence: S4; approved and directly supported.
+**R30-1 | MVP / Gate 1 foundation; Gate 2 operations**
+Web, one worker, database, object store; no broker. Owned tables/interfaces and enforced import/tests. Restricted schema roles; provider worker cannot acquire elevated credentials. Managed backups, single-command/screen operations, rehearsed recovery and proactive daily health. One-book vertical slice first.
+Acceptance: AT-11, AT-22, AT-23.
 
-Class/gate: MVP, before Gate 1 begins and throughout delivery.
-Effort and owner-attention budgets; one 50% checkpoint; ordered
-cuts; owner-only reduction/reset; one reset maximum; second miss
-requires full re-plan. Tests: AT-27, AT-28.
-Numerical caps in PLAN.md are estimates for ratification.
+## Q31: Two release gates and owner publication
 
-### Q33: closure
+Source/evidence: S3/S4 original Q31; S7 consolidated baseline; approved/direct.
+Dependency: Fixture manifests, gate validator.
 
-Source/evidence: S4; approved and directly supported.
+**R31-1 | Delivery governance / both gates**
+Original five-book dev-store proof and retry/sale tests; Gate 2 50-book/timing/fault/restore/privacy/evidence/channel/writer proof. Owner alone publishes, including under live parents. Every criterion has nonempty named known-good/known-bad evidence; no vacuous pass.
+Acceptance: AT-01, AT-06, AT-07, AT-08, AT-11, AT-22, AT-25, AT-26, AT-29, AT-30.
 
-Class/gate: MVP, documentation/governance before implementation.
-Close grilling after classification, release allocation and
-contradiction audit. Owner design approval is recorded.
-Complete source reconciliation is still required to certify this
-matrix. Test: AT-30.
+## Q32: Fixed dual budget and stop/reset rules
 
-## Amendments and audit resolutions
+Source/evidence: S3/S4 original Q32; S7 consolidated baseline; approved/direct.
+Dependency: PLAN.md, owner decision ledger.
 
-### A-CAPTURE: earlier capture amendments
+**R32-1 | Delivery governance / before Gate 1 and continuing**
+Effort and attention estimates/confidence; one 50% checkpoint; ordered owner-approved cuts; never-cut invariants; one owner reset, second miss full re-plan; evidence of estimate error. Reduced gate has own name and exact omissions.
+Acceptance: AT-27, AT-28.
 
-Source/evidence: source absent; recovered related provisions are S2 reconstructed and S3 direct.
+## Q33: Design closure
 
-Class/gate: UNALLOCATED beyond recovered Q5/Q8/Q28 provisions.
-Exact amendment text missing. Recover before source-complete status.
-Do not pretend the recovered hybrid/offline provisions exhaust it.
-Tests pending reconciliation; existing coverage AT-05, AT-10, AT-18.
+Source/evidence: S3/S4 original Q33; S7 consolidated baseline; approved/direct.
+Dependency: Source register, reviewed baseline.
 
-### A-CLI / Q26A: controlled Shopify CLI
+**R33-1 | Design governance / completed before planning**
+Classify requirements/gates and reconcile contradictions before owner baseline approval. Approval recorded; this reconciliation preserves it and distinguishes new implementation/estimate proposals.
+Acceptance: AT-30.
 
-Source/evidence: S3 Q26A; approved and directly supported.
+## Amendments, audit resolutions and derived safety constraint
 
-Class/gate: MVP, Gate 1 minimal: isolated development store,
-separate configuration, scoped identities and no committed secrets.
-Gate 2 required: production-change approval, versioned config/theme,
-validation and rollback. CLI is never a runtime dependency.
-Test: AT-24.
+### Q25A: Dual first-class capture
 
-### C-01: product grouping and copy production identity
+Source/evidence: S6 capture amendment; S7 approved baseline; approved/direct.
+Dependency: Capture, iOS client, desktop import/device adapter.
+Class/gate: MVP / Gate 2; simpler Gate 1 input permitted.
+Requirement: Equal mobile/desktop paths share canonical copy/evidence contracts and can hand off without duplicate creation. Device/time/slot provenance, accessible keyboard/spoken feedback and continuous capture. Existing CZUR Lens with import fallback; direct-driver support must be tested; no required new camera purchase.
+Acceptance: AT-05, AT-15, AT-43.
 
-Source/evidence: S4; approved and directly supported.
+### Q26A: Controlled Shopify CLI
 
-Class/gate: MVP, Gate 1 minimal.
-Title + edition + release product; individual copies as variants;
-printing differences, including PoD, do not split products;
-no sibling-derived production identity. Test: AT-01, AT-02.
+Source/evidence: S3/S6 Q26A; S7 approved baseline; approved/direct.
+Dependency: Isolated dev store, scoped identities, configuration history.
+Class/gate: MVP tooling / Gate 1; deployment controls at Gate 2.
+Requirement: Official CLI supports development/theme/API diagnostics; runtime uses supported APIs, not CLI jobs. Version app/theme config, separate production credentials, keep secrets out of GitHub, require explicit production-change approval, validation and rollback.
+Acceptance: AT-24.
 
-### C-02: variant feeds and structured data
+### C-01: Commercial grouping and independent copy evidence
 
-Source/evidence: S4; approved and directly supported.
+Source/evidence: S4 owner resolution; S7 approved baseline; approved/direct.
+Dependency: Catalogue, Commerce, copy claims.
+Class/gate: MVP / Gate 1.
+Requirement: Title + edition + release groups; originals/reprints/PoD/unverified printings can share a product. Different releases split. Copy evidence never inherited from group/sibling; supersedes Q15 production grouping.
+Acceptance: AT-01, AT-02, AT-40.
 
-Class/gate: MVP, Gate 2 required.
-Variant-specific condition and price; no single copy condition
-asserted at product level. Test: AT-25.
-Gate 1 model must preserve these distinctions.
+### C-02: Variant outputs and structured data
 
-### C-03: all product writers assessed
+Source/evidence: S4 owner resolution; S7 approved baseline; approved/direct.
+Dependency: Theme, feed/structured-data adapters.
+Class/gate: MVP / Gate 2.
+Requirement: Correct variant condition/price/photos/production; product text/data only shared facts. No one-copy condition generalised to product.
+Acceptance: AT-08, AT-25, AT-35.
 
-Source/evidence: S4; approved and directly supported.
+### C-03: All Shopify writers assessed
 
-Class/gate: MVP, Gate 2 required.
-Inventory all apps with product-write access, including metafield
-writers. Any unassessed writer blocks deployment.
-Test: AT-26. No inspection is performed during independent drafting.
+Source/evidence: S4 owner resolution; S7 approved baseline; approved/direct.
+Dependency: Writer access inventory, field ownership/conflict assessment.
+Class/gate: MVP / Gate 2.
+Requirement: Include every product/variant writer, including book-metafield apps; any unassessed writer blocks deployment. Assessment follows preservation of independent design and appropriate access authority.
+Acceptance: AT-26.
 
-### C-04: stop rather than weaken Q27
+### C-04: Fail-closed privacy
 
-Source/evidence: S4; approved and directly supported.
+Source/evidence: S4 owner resolution; S7 approved baseline; approved/direct.
+Dependency: Database credentials, provider execution boundary.
+Class/gate: MVP / Gate 1 and continuing.
+Requirement: Stop for reassessment if four components cannot demonstrate commercial/personal denial. No indirect access, inherited credential or waived security assertion.
+Acceptance: AT-09, AT-11, AT-28.
 
-Class/gate: MVP, Gate 1 minimal and continuing.
-A noncompliant external route is denied, not silently substituted.
-Tests: AT-08, AT-09, AT-28.
+### C-05: Authorised deletion and tombstone
 
-### C-05: privacy deletion/restriction with tombstone
+Source/evidence: S4 owner resolution; S7 approved baseline; approved/direct.
+Dependency: Evidence storage, restrictions and restore.
+Class/gate: MVP / Gate 2 completion; before earlier privacy-exception use.
+Requirement: Immutability forbids silent rewrite, not authorised removal/restriction. Tombstone contains only hash/reason/authoriser/time, never sensitive content.
+Acceptance: AT-20, AT-22.
 
-Source/evidence: S4; approved and directly supported.
+### C-06: One-copy emergency suspension
 
-Class/gate: MVP, Gate 2 required, with immutable evidence from
-Gate 1. Any earlier personal-data exception requires this safeguard
-before using that path.
-Tombstone has hash, reason, authoriser, time; no sensitive content.
-Test: AT-20.
+Source/evidence: S4 explicit owner selection; S7 approved baseline; approved/direct.
+Dependency: Variant/location identity, concurrency, reconciliation, critical cases.
+Class/gate: MVP / Gate 2 before live exposure.
+Requirement: Verify correct copy/variant and Shopify inventory location/current state; concurrency protection and final state confirmation. Only availability to zero; no content/price/publication/sibling change. Critical attempted/failed/confirmed states; no automatic restoration, owner approval required.
+Acceptance: AT-19, AT-39.
 
-### C-06: narrow protective action selected
+### C-07: Retain sold variants
 
-Source/evidence: S4 explicit owner selection; approved and directly supported.
+Source/evidence: S4 owner resolution; S7 approved baseline; approved/direct.
+Dependency: Commerce, theme and feed filtering.
+Class/gate: MVP / Gate 1 stock history; Gate 2 picker/feeds.
+Requirement: Keep unavailable variant/history; hide in active picker and exclude from sellable feeds. Automatic retirement remains Later.
+Acceptance: AT-07, AT-25, AT-36.
 
-Class/gate: MVP, Gate 2 required before exposure to live inventory.
-Only one affected copy's availability may be suspended automatically
-in a defined emergency. Critical exception; owner restoration.
-No content edits, unpublish, sibling change or automatic restore.
-Test: AT-19.
+### C-08: Named reduced gates
 
-### C-07: retain sold variants, suppress sales surfaces
+Source/evidence: S4 owner resolution; S7 approved baseline; approved/direct.
+Dependency: Budget/approval/evidence register.
+Class/gate: Delivery governance / Gate 1 and continuing.
+Requirement: Each approved reduction has distinct gate name/version, exact omission and actual test outcomes. No relabelled original pass.
+Acceptance: AT-27, AT-28.
 
-Source/evidence: S4; approved and directly supported.
+### SAFETY-LIVE-PARENT: Unapproved copy under a live title
 
-Class/gate: MVP, Gate 1 minimal: retain sold copy unavailable.
-Gate 2 required: hide sold variants in picker and exclude from feeds.
-Tests: AT-07, AT-25.
+Source/evidence: Q31 owner policy; S5 clarification; S7; derived enforcement of approved authority.
+Dependency: Copy staging mechanism, full channel inventory.
+Class/gate: MVP / Gate 1 mandatory negative; Gate 2 every channel.
+Requirement: An unapproved new copy remains unavailable on every enabled storefront/channel/feed/direct-cart path despite its live parent. Mechanism is proposed/TBD until proven; no guessed API flag counts as evidence.
+Acceptance: AT-29.
 
-### C-08: reduced gates have separate names
+## Coverage and review result
 
-Source/evidence: S4; approved and directly supported.
+33 numbered decisions, Q25A, Q26A and all eight audit resolutions
+are represented. No source-absent or unallocated placeholders remain.
+The live-parent safeguard is traced separately.
+All requirement groups name dependencies and acceptance tests.
 
-Class/gate: MVP, Gate 1 delivery governance and continuing.
-No agent may relabel a reduced or failed gate as the original pass.
-Tests: AT-27, AT-28.
+Earlier Q15 production splits and Q21 autonomous content changes are
+superseded, not alternative implementation choices.
+Later scope is explicit: full migration, demand/notifications,
+trade-in/collection workflow, advanced analytics, full case workflow,
+detailed cost allocation, sold-variant retirement and new categories.
+Foundational history, identity, nullable commercial records and
+manual safety holds remain allocated to Gate 2 where specified.
 
-### SAFETY-LIVE-PARENT: unapproved new copy of a live title
-
-Source/evidence: Q31/S4 owner policy plus S5 originating-agent
-clarification; derived enforcement of approved publication authority.
-Class/gate: MVP, Gate 1 mandatory negative proof and Gate 2 required.
-Requirement: no unapproved copy becomes purchasable on any enabled
-channel through association with a live parent.
-The staging mechanism is an implementation proposal, TBD.
-Test: AT-29, with storefront, feed and direct checkout cases.
-
-## Review result
-
-33 original question IDs are represented; sixteen have no source
-allocation, and Q9 is only partially recovered.
-Q26A and the capture amendment are separately tracked.
-All eight audit resolutions are individually represented.
-No requirement has been designated DROPPED without authority.
-
-Full classification is blocked, not passed. On source recovery,
-split each compound Q into testable requirements and reconcile
-specification, tests, budgets and BOM together before implementation.
+Remaining review: numerical budgets/attention, timing aggregation,
+provider/framework choices and proof of technical feasibility.
+Source recovery is not implementation approval or a gate pass.
