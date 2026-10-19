@@ -53,12 +53,14 @@ decisions, with conditional decisions counted and caps tracked.
 Effort proposals remain 16 plus 24 sessions. None are ratified.
 This corrects an estimate; it does not invoke an approved reset.
 
-CB-04 | FIXED IN REPOSITORY; LOCAL REFRESH TRACKED | Stale handover.
+CB-04 | FIXED | Stale handover.
 The local queue still claimed missing sources, 30 tests and a
 20-session Gate 2 estimate. The repository queue now closes B1,
 records 43 contracts and the current unapproved proposals.
-Refresh local saved files only through permitted filesystem access,
-then read them back. Do not treat the older local files as current.
+Filesystem permission was obtained for the scoped refresh.
+All nine local review files and the project-root queue were fetched
+from main, saved and verified byte-for-byte against their downloads.
+The earlier local 0.1 handover has been replaced.
 
 CB-05 | FIXED | Source depended on chat/local access.
 Added BASELINE_SOURCE.md so the final baseline, explicit owner
@@ -134,8 +136,13 @@ All test references resolve. Local document links resolve within
 the nine-file review package. Effort breakdowns total 16 and 24;
 attention slots total 10 and 8. The source pin matches.
 
-At close, fetch every changed/added file from main and compare its
-full text to the prepared revision. Record that read-back below.
+Completed verification:
+- Nine of nine repository files fetched from main matched the
+  prepared full-text revisions.
+- Nine local review files plus the project-root HITL queue were
+  saved and checked byte-for-byte against their GitHub downloads.
+- This closing receipt and queue record the completed checks; their
+  final saved versions are read back after the closing update.
 Software tests remain specified, not implemented or run.
 
 ## Owner queue and stopping boundary
