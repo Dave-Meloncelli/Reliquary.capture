@@ -1,6 +1,6 @@
 # Reliquary Ingest: bill of materials
 
-**Review draft 0.2 | Baseline v1.0-RC | 19 October 2026**
+**Review draft 0.3 | Baseline v1.0-RC | 19 October 2026**
 
 Repository target: Dave-Meloncelli/Reliquary.capture.
 Currency: AUD unless a future supplier quote states otherwise.
@@ -160,6 +160,9 @@ sessions. Confidence low pending runtime/device and throughput validation.
 The 24-session Gate 2 proposal supersedes the earlier unratified
 20-session estimate by explicitly allowing four sessions for full
 hybrid/dual capture. No budget increase or reset has been approved.
+Owner-attention estimates are also revised, unratified proposals:
+10 distinct Gate 1 decisions and 8 Gate 2 decisions. Earlier grouped
+review-event counts understated the approvals required.
 These are introduced estimates, not ratified spend authority.
 Human work: task breakdown/hours/rates TBD if needed.
 Agent subscription/usage charges: TBD; no assumed marginal cost.
@@ -219,3 +222,11 @@ buy additional infrastructure for them without review.
 
 Source recovery adds no new hardware purchase or infrastructure
 component. Final scope follows the approved consolidated baseline.
+
+## Circle-back clarification: provider evaluation
+
+The Gate 2 scope includes a synthetic-fixture harness for independent,
+provider-assisted and comparative modes, using the existing components.
+Separately authorised evaluation of the owner's proprietary system/
+dataset is Later. Harness effort is included in PLAN.md's existing
+24-session proposal; no further infrastructure or cap increase is made.
