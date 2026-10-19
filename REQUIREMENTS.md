@@ -1,6 +1,6 @@
 # Reliquary Ingest: requirements and gate matrix
 
-**Review draft 0.2 | Baseline v1.0-RC | 19 October 2026**
+**Review draft 0.3 | Baseline v1.0-RC | 19 October 2026**
 
 Q1–Q33 and Q25A/Q26A are now sourced. See S1–S7 and precedence
 in DESIGN_SPECIFICATION.md. S6 is the original signed-in
@@ -217,8 +217,12 @@ Dependency: Claims, provider register, adapters.
 Versioned replaceable Data Provider Interface; attributed candidates with version/time/usage restrictions, never direct canonical mutation. Human reference promotion; optional-provider outage preserves local/manual operation.
 Acceptance: AT-03, AT-09, AT-31, AT-38.
 
-**R19-2 | LATER / separately authorised independent comparison**
-Support independent/provider-assisted/comparative evaluation against identical inputs and independent truth. Preserve design/tests before access to the existing dataset; agreement alone is not correctness.
+**R19-2 | MVP / Gate 2 evaluation harness**
+Support independent/provider-assisted/comparative modes against identical synthetic inputs and independently established truth. Verify accuracy, time, cost and unresolved ambiguity without access to the pre-existing system. Dependent provider agreement is not proof of correctness.
+Acceptance: AT-31, AT-38.
+
+**R19-3 | LATER / separately authorised proprietary-data evaluation**
+Running that harness against the owner's existing implementation or dataset needs separately authorised access after the independent design and tests are preserved. This restriction does not defer the Gate 2 harness itself.
 Acceptance: AT-31, AT-38.
 
 ## Q20: Central claims and independent corroboration
