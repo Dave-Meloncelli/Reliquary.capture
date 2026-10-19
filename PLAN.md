@@ -1,6 +1,6 @@
 # Reliquary Ingest — delivery plan
 
-**Review draft 0.2 · v1.0-RC · 19 October 2026**
+**Review draft 0.3 · v1.0-RC · 19 October 2026**
 
 Target: Dave-Meloncelli/Reliquary.capture.
 Design approval is recorded. Document review, budget ratification,
@@ -59,7 +59,7 @@ The recovered allocation permits a simpler Gate 1 capture path.
 Full hybrid/dual capture, adaptive evidence, location workflow,
 reference promotion and qualified bulk approval are Gate 2 work.
 This allocation is distinct from an owner-approved Q32 scope cut.
- No essential safety invariant
+No essential safety invariant
 can be moved to Later merely to improve the apparent result.
 
 ## Fixed budget proposal
@@ -87,7 +87,7 @@ Gate 2 cap, revised proposal: **24 additional agent sessions**.
 Confidence: low; subject to Gate 1 evidence and owner ratification.
 
 - Hybrid iOS, dual desktop/CZUR fallback, templates/adaptive capture: 4.
-- Roles, reference promotion, claims and operational policy: 3.
+- Roles, reference promotion, claims, provider harness and policy: 3.
 - Shopify lifecycle, concurrency and historical foundations: 5.
 - Theme, structured data and variant feed verification: 4.
 - Privacy, portable export, restore and recovery: 3.
@@ -104,17 +104,33 @@ No unpriced human implementation effort is assumed. If humans are
 needed, record named tasks and estimated hours separately and seek
 a revised budget before consuming them.
 
-**Owner attention cap, proposed:** five Gate 1 decision events:
+**Owner attention cap, revised proposal: 10 distinct Gate 1 decisions.**
+Confidence: low; conditional exceptions and dependency choices may
+consume more. The earlier five-event estimate grouped independent
+approvals and was not a sound decision count.
 
-1. Review and ratify this five-file package, allocation and budget.
-2. Confirm the fixture roster and initial capture/condition policy.
-3. Resolve one batched set of policy exceptions.
-4. Decide at the single 50% checkpoint.
-5. Accept or reject the Gate 1 evidence.
+1. Accept the reconciled document package for planning: 1.
+2. Ratify the Gate 1 effort cap: 1.
+3. Ratify the Gate 1 attention cap: 1.
+4. Confirm the actual five-book truth/fixture manifest: 1.
+5. Approve the initial versioned evidence/condition policy: 1.
+6. Select the Gate 1 dependency option prepared for review: 1.
+7. Reserve for one exception disposition: 1.
+8. Decide at the single 50% checkpoint: 1.
+9. Accept or reject the Gate 1 evidence: 1.
+10. Reserve for one additional conditional approval: 1.
 
-Gate 2 attention cap, proposed: four decision events covering
-production policy, writer/conflict assessment, acceptance evidence,
-and go-live. These are separate from Gate 1.
+Gate 2 attention cap, revised proposal: **8 distinct decisions**:
+effort cap; attention cap; production-policy version; prepared
+dependency/spend option; writer-assessment disposition; timing-rule
+acceptance; production-gate evidence; and deployment/go-live approval.
+
+These are estimating slots, not a device for grouping unrelated
+decisions. If a dependency option, policy review or checkpoint
+requires several independent approvals, count each. Additional cuts,
+reset, exception or vendor decisions consume remaining slots.
+Report forecast exhaustion before asking for another decision.
+Only the owner may revise a cap; silence is not consent.
 
 Count actual decisions, not merely meetings. A batch containing
 three independent approvals consumes three decisions. Unexpected
@@ -177,7 +193,10 @@ re-plan, not another extension. Estimates are learning evidence.
 
 1. Verify the reconciled S6/S7 decision and precedence manifest.
 2. Ratify gate scope, budget, fixture manifest and dependency choices.
-3. Build the minimum four-component path using synthetic data first.
+3. Run one real book end to end through the minimum four-component
+   path to a reviewed Shopify draft in the isolated development
+   store, preceded by synthetic safety fixtures. Do this before
+   completing individual modules or widening to the five-book set.
 4. Run each positive and negative Gate 1 fixture.
 5. Hold the single checkpoint at the prescribed spend.
 6. Finish within the ratified scope or report the named reduced gate.
@@ -208,7 +227,8 @@ full recovered register and release-classification table.
 No missing requirement has been silently dropped or moved to Later.
 
 HITL-B2: review reconciled package, ratify numerical budgets and
-owner-attention caps, and define timing acceptance.
+owner-attention caps, and define timing acceptance. Proposed attention caps are now
+10 distinct Gate 1 decisions and 8 Gate 2 decisions, not meetings.
 Owner: Dave. Trigger: before implementation.
 The 120-second target has no recovered aggregation/outlier rule.
 The revised 24-session Gate 2 proposal is explicitly unapproved.
@@ -234,6 +254,6 @@ The suite now contains 43 named contracts, with Later portions
 explicitly excluded from Gate 2 execution requirements.
 No software gate test is represented as executed.
 
-Local saved 0.1 drafts predate this GitHub reconciliation.
-The reviewed remote revision is the sharing copy; refresh local
-deliverables when filesystem write access is available.
+GitHub main is the sharing copy. Local draft and queue synchronisation
+is recorded in CIRCLE_BACK.md; local files must not be presumed current
+until the saved-file read-back confirms their revision.
