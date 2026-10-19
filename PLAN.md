@@ -1,6 +1,6 @@
 # Reliquary Ingest — delivery plan
 
-**Review draft · v1.0-RC · 19 October 2026**
+**Review draft 0.2 · v1.0-RC · 19 October 2026**
 
 Target: Dave-Meloncelli/Reliquary.capture.
 Design approval is recorded. Document review, budget ratification,
@@ -11,7 +11,9 @@ This document authorises none of those actions.
 
 Use the canonical specification and requirements matrix in this
 package. Later owner amendments and C-01–C-08 override conflicting
-earlier interpretations. Unrecovered decisions stay unresolved.
+earlier interpretations. Original Q1–Q25 records and Q25A have now been read in the signed-in
+source chat; the updated local transcript supplies the approved
+consolidated baseline and full recovered register (S6/S7).
 
 Prepare and preserve the independent design before inspecting any
 pre-existing implementation or proprietary dataset. This package
@@ -45,8 +47,19 @@ authorises autonomous publication. A new copy under a published
 parent must remain unpurchasable across all enabled channels until
 the owner-controlled release. AT-29 is mandatory at both gates.
 
-**Later** work is explicitly excluded from a gate only by the
-reviewed requirements allocation. No essential safety invariant
+**Later** scope is explicit in the approved consolidated baseline:
+full historical Shopify migration; demand/notifications; trade-in and
+collection workflows; advanced intelligence; full customer-impact
+cases; detailed cost allocation; sold-variant retirement; and new
+collectible categories. Preserve Gate 2 identity/history/nullable
+cost foundations and manual holds without implementing those full
+workflows.
+
+The recovered allocation permits a simpler Gate 1 capture path.
+Full hybrid/dual capture, adaptive evidence, location workflow,
+reference promotion and qualified bulk approval are Gate 2 work.
+This allocation is distinct from an owner-approved Q32 scope cut.
+ No essential safety invariant
 can be moved to Later merely to improve the apparent result.
 
 ## Fixed budget proposal
@@ -59,25 +72,33 @@ receipt, at most two elapsed hours. It is an estimating unit,
 not a guarantee of continuous execution or billable human time.
 
 Gate 1 cap: **16 agent sessions**.
-Confidence: low until missing source decisions are reconciled.
+Confidence: low until device/runtime choices and representative
+implementation throughput are validated.
 Breakdown:
 
-- Source reconciliation and executable fixture contracts: 2.
+- Source verification and executable fixture contracts: 2.
 - Copy model, evidence provenance and local persistence: 3.
-- Mobile capture and desktop review path: 3.
+- Minimal durable capture input and desktop review path: 3.
 - Draft provisioning and idempotent retry/reconciliation: 3.
 - Positive and negative fixture execution and repair: 3.
 - Evidence packaging and gate review: 2.
 
-Gate 2 cap: **20 additional agent sessions**.
+Gate 2 cap, revised proposal: **24 additional agent sessions**.
 Confidence: low; subject to Gate 1 evidence and owner ratification.
 
-- Permissions, roles and operational policies: 3.
-- Shopify lifecycle and concurrency reconciliation: 5.
+- Hybrid iOS, dual desktop/CZUR fallback, templates/adaptive capture: 4.
+- Roles, reference promotion, claims and operational policy: 3.
+- Shopify lifecycle, concurrency and historical foundations: 5.
 - Theme, structured data and variant feed verification: 4.
-- Privacy, restoration and operational recovery: 3.
-- Product-writer assessment and emergency controls: 3.
+- Privacy, portable export, restore and recovery: 3.
+- Product-writer assessment, exception centre and emergency controls: 3.
 - Full acceptance execution and deployment review: 2.
+
+The earlier 20-session Gate 2 proposal omitted an explicit allowance
+for the full hybrid/dual-capture work. This source-reconciliation
+revision proposes four additional sessions before any budget has
+been ratified. It is not an owner-approved increase or an authorised
+Q32 reset. The owner may accept or reject the revised estimate.
 
 No unpriced human implementation effort is assumed. If humans are
 needed, record named tasks and estimated hours separately and seek
@@ -154,7 +175,7 @@ re-plan, not another extension. Estimates are learning evidence.
 
 ## Work order and evidence
 
-1. Reconcile approved source and resolve all unallocated requirements.
+1. Verify the reconciled S6/S7 decision and precedence manifest.
 2. Ratify gate scope, budget, fixture manifest and dependency choices.
 3. Build the minimum four-component path using synthetic data first.
 4. Run each positive and negative Gate 1 fixture.
@@ -172,39 +193,47 @@ Documentation preparation runs no acceptance tests.
 
 ## Review and commit boundary
 
-These five local drafts are the complete requested output.
-Review them together. No repository checkout, existing-system
-inspection, remote writes, commit, purchase or deployment is part
-of this drafting task.
+The five documents and README are reviewed together.
+The owner subsequently authorised upload and placement on main
+for sharing with Josh. This source-reconciled revision preserves
+review status and does not imply spending, implementation,
+production Shopify access or deployment approval.
+No pre-existing implementation or proprietary dataset was inspected.
 
 ## Current review queue and circle-back
 
-HITL-B1: missing approved source. Recover Q10 to Q25, Q9's
-truncated remainder and earlier capture amendments.
-Owner: Dave supplies source if retrieval remains unavailable;
-drafting agent reconciles it. Trigger: before complete canonical
-status or implementation. No requirement is dropped by this gap.
+HITL-B1: source recovery CLOSED. Original Q1–Q25, complete Q9 and
+Q25A are supported by S6; S7 supplies the approved final baseline,
+full recovered register and release-classification table.
+No missing requirement has been silently dropped or moved to Later.
 
-HITL-B2: ratify proposed gate allocations, numerical budgets and
-the timing rule. Owner: Dave. Trigger: after B1, before implementation.
+HITL-B2: review reconciled package, ratify numerical budgets and
+owner-attention caps, and define timing acceptance.
+Owner: Dave. Trigger: before implementation.
 The 120-second target has no recovered aggregation/outlier rule.
+The revised 24-session Gate 2 proposal is explicitly unapproved.
 
 HITL-B3: choose framework/providers and agree material expenditure.
 Owner: Dave after implementer prepares costed options.
-Trigger: before the affected stage. No purchase is authorised now.
+Trigger: before the affected stage. No purchase is authorised.
 
-TEAM-B4: design and prove live-parent staging across enabled sales
-channels. Owner: authorised implementer. Trigger: Gate 1 AT-29 and
-Gate 2 channel certification. No existing live product is inspected
-or modified by this documentation task.
+TEAM-B4: prove live-parent staging across all enabled channels.
+Owner: authorised implementer. Trigger: Gate 1 AT-29 and Gate 2
+channel certification. No production inspection/mutation now.
 
 TEAM-B5: demonstrate worker isolation with the real worker identity
 and no elevated credentials available in the process.
-Owner: authorised implementer. Trigger: Gate 1 privacy proof;
-recheck at Gate 2. Separate schemas alone do not pass.
+Owner: authorised implementer. Trigger: Gate 1 privacy proof,
+rechecked at Gate 2. Separate schemas alone do not pass.
 
-Circle-back result: Q26A/Q26 to Q31 were recovered from the export;
-Q32/Q33 and audit decisions came from the accessible chat;
-Q1 to Q9 came from an explicitly reconstructed register.
-Q10 to Q25 remain absent. The five files are review drafts,
-not evidence that source-complete classification or acceptance passed.
+Circle-back: source and approved deferrals are reconciled across
+specification, requirements, tests, plan, BOM and README.
+Q15/Q21/Q25 are interpreted under C-01/C-06/Q31, not resurrected
+as production-group splitting or autonomous publication.
+The suite now contains 43 named contracts, with Later portions
+explicitly excluded from Gate 2 execution requirements.
+No software gate test is represented as executed.
+
+Local saved 0.1 drafts predate this GitHub reconciliation.
+The reviewed remote revision is the sharing copy; refresh local
+deliverables when filesystem write access is available.
